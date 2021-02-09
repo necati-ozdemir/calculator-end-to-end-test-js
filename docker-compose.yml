@@ -1,0 +1,45 @@
+---
+version: '3.2'
+
+services:
+
+  addition-service:
+    hostname: addition-service
+    image: mbarkin26/addition-service:latest
+    ports:
+      - "8070:8070"
+    environment:
+      SERVER_PORT: 8070
+
+  subtraction-service:
+    hostname: subtraction-service
+    image: mbarkin26/subtraction-service:latest
+    ports:
+      - "8071:8071"
+    environment:
+      SERVER_PORT: 8071
+
+  calculator-service:
+    hostname: calculator-service
+    image: mbarkin26/calculator-service:latest
+    ports:
+      - "8072:8072"
+    environment:
+      CALCULATOR_ADDITIONSERVICEURL: http://${WORKER_IP}:8070/api/addition/calculate
+      CALCULATOR_SUBTRACTIONSERVICEURL: http://${WORKER_IP}:8071/api/subtraction/calculate
+      SERVER_PORT: 8072
+    depends_on:
+      - addition-service
+      - subtraction-service
+
+  calculator-ui:
+    hostname: calculator-ui
+    image: mbarkin26/calculator-ui:0.0.1
+    ports:
+      - "8073:8073"
+    environment:
+      REACT_APP_CALCULATOR_SERVICE_ADDITION_URL: http://${WORKER_IP}:8072/calculator/addition
+      REACT_APP_CALCULATOR_SERVICE_SUBTRACTION_URL: http://${WORKER_IP}:8072/calculator/subtraction
+      PORT: 8073
+    depends_on:
+      - calculator-service

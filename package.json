@@ -1,0 +1,24 @@
+{
+  "name": "calculator-end-to-end-test",
+  "version": "1.0.0",
+  "description": "An example for Cypress and Cucumber usage",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^6.4.0",
+    "fs-extra": "^9.1.0"
+  },
+  "scripts": {
+
+    "compose-up": "docker-compose up",
+    "compose-down": "docker-compose down -v",
+    "upAndOpen": "docker-compose up -d && cypress run",
+    "test": "cypress open"
+  },
+  "devDependencies": {
+    "cypress-cucumber-preprocessor": "^4.0.0",
+    "testcontainers": "^7.4.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  }
+}
