@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { docker 'node:6.3' }
 
   options {
     buildDiscarder(logRotator(numToKeepStr: '3'))
@@ -14,13 +14,17 @@ pipeline {
     }
     stage('Get dependencies') {
       steps {
-        sh 'npm install'
+//         withNPM(npmrcConfig:'my-custom-npmrc') {
+            sh 'npm install'
+//         }
       }
     }
     stage('Execute') {
       steps {
-          sh 'npm run upAndOpen'
-          sh 'npm run compose-down'
+//         withNPM(npmrcConfig:'my-custom-npmrc') {
+            sh 'npm run upAndOpen'
+            sh 'npm run compose-down'
+//         }
       }
     }
   }
