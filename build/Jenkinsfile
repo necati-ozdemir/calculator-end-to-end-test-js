@@ -14,14 +14,14 @@ pipeline {
     }
     stage('Get dependencies') {
       steps {
-        withNPM(npmrcConfig:'npm') {
+        withNPM(npmrcConfig:'my-custom-npmrc') {
             sh 'npm install'
         }
       }
     }
     stage('Execute') {
       steps {
-        withNPM(npmrcConfig:'npm') {
+        withNPM(npmrcConfig:'my-custom-npmrc') {
             sh 'npm run upAndOpen'
             sh 'npm run compose-down'
         }
