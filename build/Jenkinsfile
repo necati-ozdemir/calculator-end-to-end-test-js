@@ -1,7 +1,7 @@
 node {
-    tools {
-        nodejs "NodeJS"
-    }
+//    tools {
+//        nodejs "NodeJS"
+//    }
 //
 //    options {
 //        buildDiscarder(logRotator(numToKeepStr: '3'))
@@ -9,7 +9,8 @@ node {
 
     stage('Initialize') {
         def dockerHome = tool 'docker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
+        def nodeJsHome = tool 'NodeJS'
+        env.PATH = "${dockerHome}/bin:${nodeJsHome}/bin:${env.PATH}"
     }
 
 
