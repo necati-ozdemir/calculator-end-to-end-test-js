@@ -17,19 +17,15 @@ pipeline {
     }
     stage('Get dependencies') {
       steps {
-        nvm(env.NODE_VERSION) {
           sh 'npm install'
-        }
       }
     }
     stage('Execute') {
       steps {
-        nvm(env.NODE_VERSION) {
+
           sh 'npm run upAndOpen'
-        }
-        nvm(env.NODE_VERSION) {
           sh 'npm run compose-down'
-        }
+
       }
     }
   }
