@@ -9,9 +9,9 @@
   },
   "scripts": {
 
-    "compose-up": "/usr/local/bin/docker-compose up",
-    "compose-down": "/usr/local/bin/docker-compose  down -v",
-    "upAndOpen": "/usr/local/bin/docker-compose up -d && cypress run",
+    "compose-up": "docker-compose up",
+    "compose-down": "docker-compose down -v",
+    "upAndOpen": "docker-compose up -d && cypress run",
     "test": "cypress open"
   },
   "devDependencies": {
