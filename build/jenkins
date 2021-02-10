@@ -1,0 +1,46 @@
+pipeline {
+    agent {
+        docker { image 'node:14-alpine' }
+    }
+
+    tools {
+        nodejs "NodeJS"
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '3'))
+    }
+
+//    environment {
+//
+//        PATH = "$PATH:${dockerHome}/bin"
+    //   }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Get dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Execute') {
+            steps {
+
+                sh 'npm run upAndOpen'
+                sh 'npm run compose-down'
+
+            }
+        }
+    }
+
+    // post {
+    // always {
+    //  junit keepLongStdio: true, testResults: 'test-results/*.xml', allowEmptyResults: true
+    // archiveArtifacts artifacts: 'cypress/videos/**/*.mp4', onlyIfSuccessful: false
+    //}
+    //}
+}
