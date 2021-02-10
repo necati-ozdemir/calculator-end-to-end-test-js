@@ -1,39 +1,29 @@
-pipeline {
-    agent any
-
+node {
     tools {
         nodejs "NodeJS"
     }
+//
+//    options {
+//        buildDiscarder(logRotator(numToKeepStr: '3'))
+//    }
 
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '3'))
-    }
-
-    environment {
+    stage('Initialize') {
         def dockerHome = tool 'docker'
-        PATH = "$PATH:${dockerHome}/bin"
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        stage('Get dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Execute') {
-            steps {
 
-                sh 'npm run upAndOpen'
-                sh 'npm run compose-down'
-
-            }
-        }
+    stage('Checkout') {
+        checkout scm
     }
+    stage('Get dependencies') {
+        sh 'npm install'
+    }
+    stage('Execute') {
+        sh 'npm run upAndOpen'
+        sh 'npm run compose-down'
+    }
+
 
     // post {
     // always {
