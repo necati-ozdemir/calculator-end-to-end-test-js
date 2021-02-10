@@ -5,6 +5,9 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '3'))
   }
 
+  environment {
+    NODE_VERSION = 'v8.12.0'
+  }
 
   stages {
     stage('Checkout') {
@@ -14,16 +17,18 @@ pipeline {
     }
     stage('Get dependencies') {
       steps {
-        withNPM(npmrcConfig:'my-custom-npmrc') {
-            sh 'npm install'
+        nvm(env.NODE_VERSION) {
+          sh 'npm install'
         }
       }
     }
     stage('Execute') {
       steps {
-        withNPM(npmrcConfig:'my-custom-npmrc') {
-            sh 'npm run upAndOpen'
-            sh 'npm run compose-down'
+        nvm(env.NODE_VERSION) {
+          sh 'npm run upAndOpen'
+        }
+        nvm(env.NODE_VERSION) {
+          sh 'npm run compose-down'
         }
       }
     }
