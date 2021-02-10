@@ -25,6 +25,7 @@ pipeline {
         stage('Get dependencies') {
             steps {
                 sh 'npm install'
+                sh "docker-compose up -d"
             }
         }
         stage('Execute') {
