@@ -1,7 +1,7 @@
 pipeline {
   agent any
 
-  tools {NodeJS "NodeJS"}
+  tools {nodejs "NodeJS"}
 
   options {
     buildDiscarder(logRotator(numToKeepStr: '3'))
