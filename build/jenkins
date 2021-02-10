@@ -33,7 +33,9 @@ pipeline {
         }
         stage('Execute') {
             steps {
-
+                sh 'apk update'
+                sh 'apk add py-pip python3-dev libffi-dev openssl-dev gcc libc-dev make'
+                sh 'pip install docker-compose'
                 sh 'npm run upAndOpen'
                 sh 'npm run compose-down'
 
