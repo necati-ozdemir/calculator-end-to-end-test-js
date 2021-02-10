@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-                    image 'docker/compose:latest'
+
                    image 'node:14-alpine'
                    image 'cypress/base:10'
                    //image 'mbarkin26/addition-service:latest'
@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Get dependencies') {
             steps {
-            sh 'docker-compose up -d'
+            docker.image('mbarkin26/addition-service:latest').withRun('-e "SERVER_PORT=8070"')
                    echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
                        sh 'npm ci'
                      //  sh 'npm run cy:verify'
