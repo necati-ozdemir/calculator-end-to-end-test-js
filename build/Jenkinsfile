@@ -2,9 +2,6 @@ pipeline {
   agent {
     label 'master'
   }
-   environment {
-          PATH = "$PATH:/usr/local/bin"
-      }
 
   tools{
     nodejs "NodeJS"
@@ -16,6 +13,7 @@ pipeline {
 
   environment {
     NODE_VERSION = 'v8.12.0'
+    PATH = "$PATH:/usr/local/bin"
   }
 
   stages {
