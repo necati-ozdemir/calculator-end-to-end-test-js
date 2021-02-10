@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
                    image 'node:14-alpine'
-                   image 'mbarkin26/addition-service:latest'
+                 //  image 'mbarkin26/addition-service:latest'
                }
     }
 
