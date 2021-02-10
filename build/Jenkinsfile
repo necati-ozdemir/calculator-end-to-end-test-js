@@ -10,7 +10,7 @@ pipeline {
     }
 
     environment {
-
+        def dockerHome = tool 'docker'
         PATH = "$PATH:${dockerHome}/bin"
     }
 
