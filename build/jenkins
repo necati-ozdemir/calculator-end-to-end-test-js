@@ -1,10 +1,11 @@
 pipeline {
     agent {
         docker {
+                   image 'docker/compose:latest'
                    image 'node:14-alpine'
                    image 'cypress/base:10'
                    //image 'mbarkin26/addition-service:latest'
-                   image 'docker/compose:latest'
+
                }
     }
 
