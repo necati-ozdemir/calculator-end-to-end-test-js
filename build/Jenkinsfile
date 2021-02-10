@@ -2,6 +2,9 @@ pipeline {
   agent {
     label 'master'
   }
+   environment {
+          PATH = "$PATH:/usr/local/bin"
+      }
 
   tools{
     nodejs "NodeJS"
