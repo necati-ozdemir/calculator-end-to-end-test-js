@@ -4,7 +4,5 @@ npm-debug.log
 .idea/
 cypress/screenshots
 test-results/
-cypress/integration/examples
-cypress/integration/features
 .DS_Store
 *.zip

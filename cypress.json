@@ -1,1 +1,9 @@
-{}
+{
+  "baseUrl": "http://localhost:8073/",
+  "testFiles": "**/*.feature",
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "test-results/test-output-[hash].xml"
+  },
+  "chromeWebSecurity": false
+}

@@ -8,7 +8,6 @@
     "fs-extra": "^9.1.0"
   },
   "scripts": {
-
     "compose-up": "docker-compose up",
     "compose-down": "docker-compose down -v",
     "upAndOpen": "cypress run",
@@ -19,6 +18,12 @@
     "testcontainers": "^7.4.0"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
   }
 }
