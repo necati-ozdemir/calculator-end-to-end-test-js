@@ -38,7 +38,7 @@ module.exports = (on, config) => {
             return cont.getName();
         },
         createComposeContainer: async () => {
-            const composeFilePath = path.resolve(__dirname, "E:\\Workspace\\calculator-end-to-end-test-js");
+            const composeFilePath = path.resolve(__dirname, "../../");
             console.log(composeFilePath)
             const composeFile = "docker-compose.yml";
             const cont = await new DockerComposeEnvironment(composeFilePath, composeFile)

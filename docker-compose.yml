@@ -32,14 +32,14 @@ services:
       - addition-service
       - subtraction-service
 
-  calculator-ui:
-    hostname: calculator-ui
-    image: mbarkin26/calculator-ui:0.0.1
-    ports:
-      - "8073:8073"
-    environment:
-      REACT_APP_CALCULATOR_SERVICE_ADDITION_URL: http://${WORKER_IP}:8072/calculator/addition
-      REACT_APP_CALCULATOR_SERVICE_SUBTRACTION_URL: http://${WORKER_IP}:8072/calculator/subtraction
-      PORT: 8073
-    depends_on:
-      - calculator-service
+#  calculator-ui:
+#    hostname: calculator-ui
+#    image: mbarkin26/calculator-ui:0.0.1
+#    ports:
+#      - "8073:8073"
+#    environment:
+#      REACT_APP_CALCULATOR_SERVICE_ADDITION_URL: http://${WORKER_IP}:8072/calculator/addition
+#      REACT_APP_CALCULATOR_SERVICE_SUBTRACTION_URL: http://${WORKER_IP}:8072/calculator/subtraction
+#      PORT: 8073
+#    depends_on:
+#      - calculator-service
