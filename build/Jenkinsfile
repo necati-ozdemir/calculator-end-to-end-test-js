@@ -22,7 +22,6 @@ node {
     }
     stage('Execute') {
         sh 'npm run upAndOpen'
-        sh 'npm run compose-down'
     }
 
 
