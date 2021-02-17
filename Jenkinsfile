@@ -7,28 +7,32 @@ node {
 //        buildDiscarder(logRotator(numToKeepStr: '3'))
 //    }
 
+  wrap([$class: 'Xvfb']) {
     stage('Initialize') {
-        def dockerHome = tool 'docker'
-        def nodeJsHome = tool 'NodeJS'
-        env.PATH = "${dockerHome}/bin:${nodeJsHome}/bin:${env.PATH}"
-    }
+           def dockerHome = tool 'docker'
+           def nodeJsHome = tool 'NodeJS'
+           env.PATH = "${dockerHome}/bin:${nodeJsHome}/bin:${env.PATH}"
+       }
 
 
-    stage('Checkout') {
-        checkout scm
-    }
-    stage('Get dependencies') {
-        sh 'npm install'
-    }
-    stage('Execute') {
-        sh 'npm run upAndOpen'
-    }
+       stage('Checkout') {
+           checkout scm
+       }
+       stage('Get dependencies') {
+           sh 'npm install'
+       }
+       stage('Execute') {
+           sh 'npm run upAndOpen'
+       }
 
 
-    // post {
-    // always {
-    //  junit keepLongStdio: true, testResults: 'test-results/*.xml', allowEmptyResults: true
-    // archiveArtifacts artifacts: 'cypress/videos/**/*.mp4', onlyIfSuccessful: false
-    //}
-    //}
+       // post {
+       // always {
+       //  junit keepLongStdio: true, testResults: 'test-results/*.xml', allowEmptyResults: true
+       // archiveArtifacts artifacts: 'cypress/videos/**/*.mp4', onlyIfSuccessful: false
+       //}
+       //}
+  }
+
+
 }
