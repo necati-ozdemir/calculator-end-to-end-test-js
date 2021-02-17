@@ -24,6 +24,9 @@ node {
 
        }
        stage('Execute') {
+           def dockerHome = tool 'docker'
+                  def nodeJsHome = tool 'NodeJS'
+                  env.PATH = "${dockerHome}/bin:${nodeJsHome}/bin:${env.PATH}"
            docker.image('cypress/base:10').inside{
                 sh 'npm run ssat'
            }
