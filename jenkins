@@ -4,7 +4,7 @@ pipeline {
 
                    image 'node:14-alpine'
                    image 'cypress/base:10'
-                   //image 'mbarkin26/addition-service:latest'
+
 
                }
     }
@@ -28,17 +28,15 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Get dependencies') {
-            steps {
-            docker.image('mbarkin26/addition-service:latest').withRun('-e "SERVER_PORT=8070"')
-                   echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                       sh 'npm ci'
-                     //  sh 'npm run cy:verify'
-            }
-        }
+          stage('Get dependencies') {
+       steps{
+                  sh 'npm install'
+
+              }
+              }
         stage('Execute') {
             steps {
-                sh 'npm run upAndOpen'
+                 sh 'npm run cy:run'
             }
         }
     }
