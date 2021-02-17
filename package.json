@@ -12,9 +12,11 @@
     "compose-up": "docker-compose up -d",
     "compose-down": "docker-compose down -v",
     "upAndOpen": "cypress run",
-    "test": "cypress open"
+    "test": "cypress open",
+    "cypress:ci": "concurrently \"cypress run\" --kill-others \"ng serve\" --success first"
   },
   "devDependencies": {
+    "concurrently": "^5.3.0",
     "cypress-cucumber-preprocessor": "^4.0.0",
     "testcontainers": "^7.4.0"
   },
