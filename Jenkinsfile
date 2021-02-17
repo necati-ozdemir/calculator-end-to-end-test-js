@@ -18,7 +18,7 @@ node {
            checkout scm
        }
        stage('Get dependencies') {
-           sh 'apt-get install xvfb -y'
+           sh 'docker run -v cypress/included:3.4.0'
            sh 'npm install'
 
        }
