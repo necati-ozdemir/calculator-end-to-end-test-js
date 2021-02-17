@@ -7,7 +7,7 @@ node {
 //        buildDiscarder(logRotator(numToKeepStr: '3'))
 //    }
 
-  wrap([$class: 'xvfb']) {
+  wrap([$class: 'Xvfb']) {
     stage('Initialize') {
            def dockerHome = tool 'docker'
            def nodeJsHome = tool 'NodeJS'
