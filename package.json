@@ -4,6 +4,7 @@
   "description": "An example for Cypress and Cucumber usage",
   "main": "index.js",
   "dependencies": {
+    "@cypress/xvfb": "^1.2.4",
     "@material-ui/core": "latest",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
