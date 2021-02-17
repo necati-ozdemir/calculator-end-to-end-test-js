@@ -21,7 +21,7 @@ node {
         sh 'npm install'
     }
     stage('Execute') {
-        sh 'npm run cypress:ci'
+        sh 'npm run upAndOpen'
     }
 
 
