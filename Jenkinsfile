@@ -20,11 +20,12 @@ node {
        stage('Get dependencies') {
 
            sh 'npm install'
+           sh 'npm run cy:install'
 
        }
        stage('Execute') {
            docker.image('cypress/base:10').inside{
-                sh 'cypress run'
+                sh 'npm run ssat'
            }
        }
 
