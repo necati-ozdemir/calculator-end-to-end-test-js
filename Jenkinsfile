@@ -23,7 +23,9 @@ node {
 
        }
        stage('Execute') {
-           sh 'npm run cy:run'
+           docker.image('cypress/base:10').inside{
+                sh 'cypress run'
+           }
        }
 
 
