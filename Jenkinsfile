@@ -18,7 +18,7 @@ node {
            checkout scm
        }
        stage('Get dependencies') {
-           sh 'apt-get install libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb -y'
+           sh 'apt-get install xvfb -y'
            sh 'npm install'
 
        }
