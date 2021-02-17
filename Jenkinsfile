@@ -21,7 +21,7 @@ node {
            sh 'npm install'
        }
        stage('Execute') {
-           sh 'npm run upAndOpen'
+           sh 'npm run cy:run'
        }
 
 
