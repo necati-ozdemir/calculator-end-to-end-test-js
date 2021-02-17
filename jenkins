@@ -31,7 +31,7 @@ pipeline {
           stage('Get dependencies') {
        steps{
                   sh 'npm install'
-                  sh 'cypress install'
+                  sh 'npm run cy:install'
 
               }
               }

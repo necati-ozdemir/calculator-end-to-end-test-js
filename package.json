@@ -26,6 +26,7 @@
     "start": "react-scripts start",
     "test": "cypress open",
     "cy:run": "cypress run",
+    "cy:install": "cypress install",
     "ssat": "start-server-and-test start http://localhost:3000 cy:run"
   },
   "devDependencies": {
