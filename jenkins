@@ -36,7 +36,7 @@ pipeline {
               }
         stage('Execute') {
             steps {
-                 sh 'npm run cy:run'
+                 sh 'npm run ssat'
             }
         }
     }
