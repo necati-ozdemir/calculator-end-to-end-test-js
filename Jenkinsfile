@@ -7,7 +7,6 @@ node {
 //        buildDiscarder(logRotator(numToKeepStr: '3'))
 //    }
 
-  wrap([$class: 'Xvfb']) {
     stage('Initialize') {
            def dockerHome = tool 'docker'
            def nodeJsHome = tool 'NodeJS'
@@ -32,7 +31,7 @@ node {
        // archiveArtifacts artifacts: 'cypress/videos/**/*.mp4', onlyIfSuccessful: false
        //}
        //}
-  }
+
 
 
 }
