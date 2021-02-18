@@ -26,6 +26,7 @@ When(/^Barkın wants to perform (\S+) those two numbers$/, (operation) => {
 });
 
 Then(/^Barkın should see result (\S+) and (\S+) message$/, (resultValue, resultMessage) => {
+    console.log(calculatorConfigResolver.resultValueElementId)
     cy.get('input[id="'+ calculatorConfigResolver.resultValueElementId + '"]').should('have.value', resultValue)
     cy.get('input[id="'+ calculatorConfigResolver.resultMessageElementId + '"]').should('have.value', resultMessage)
 });

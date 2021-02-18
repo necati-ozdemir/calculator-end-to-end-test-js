@@ -42,7 +42,7 @@ module.exports = (on, config) => {
             console.log(composeFilePath)
             const composeFile = "docker-compose.yml";
             const cont = await new DockerComposeEnvironment(composeFilePath, composeFile)
-                .withEnv("WORKER_IP", "10.150.21.212")
+                .withEnv("WORKER_IP", "10.150.17.73")
                 .withWaitStrategy("calculator-ui", Wait.forLogMessage("You can now view calculator-ui in the browser."))
                 .up();
             // const props = {}
