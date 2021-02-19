@@ -20,7 +20,7 @@ node {
        stage('Get dependencies') {
 
            sh 'npm install'
-           sh 'npm run cy:install'
+
 
        }
        stage('Execute') {
@@ -28,6 +28,7 @@ node {
                   def nodeJsHome = tool 'NodeJS'
                   env.PATH = "${dockerHome}/bin:${nodeJsHome}/bin:${env.PATH}"
            docker.image('cypress/base:10').inside{
+                sh 'npm run cy:install'
                 sh 'npm run ssat'
            }
        }
