@@ -1,17 +1,16 @@
 pipeline {
 
     agent {
-        label 'docker'
+        label 'docker' {
+            image 'node:14-alpine'
+            image 'cypress/base:10'
+        }
 
     }
     stages {
         stage('Test') {
-            agent {
-                docker {
-                    image 'node:14-alpine'
-                }
-            }
             steps {
+                sh 'docker no'
                 sh 'node --version'
             }
         }
