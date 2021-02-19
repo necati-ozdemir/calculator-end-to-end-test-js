@@ -43,7 +43,8 @@ module.exports = (on, config) => {
             const composeFile = "docker-compose.yml";
             const cont = await new DockerComposeEnvironment(composeFilePath, composeFile)
                 .withEnv("WORKER_IP", "10.150.17.73")
-                .withWaitStrategy("calculator-ui", Wait.forLogMessage("You can now view calculator-ui in the browser."))
+                .withStartupTimeout(120000)
+              //  .withWaitStrategy("calculator-ui", Wait.forLogMessage("You can now view calculator-ui in the browser."))
                 .up();
             // const props = {}
             // props.port = cont.getMappedPort(8070);
