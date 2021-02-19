@@ -137,7 +137,7 @@ module.exports = (on, config) => {
             ).down();
             // Object.assign(DockerComposeEnvironment, environment);
             // await environment.down();
-            return null;
+            return cont;
         }
     });
     // `on` is used to hook into various events Cypress emits
