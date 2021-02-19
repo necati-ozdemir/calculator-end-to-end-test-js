@@ -27,7 +27,7 @@ node {
           def dockerHome = tool 'docker'
                   def nodeJsHome = tool 'NodeJS'
                   env.PATH = "${dockerHome}/bin:${nodeJsHome}/bin:${env.PATH}"
-           docker.image('cypress/base:10').inside{
+           docker.image('cypress/base:latest').inside{
                 sh 'npm run cy:install'
                 sh 'npm run ssat'
            }
