@@ -32,6 +32,7 @@ node {
                 //sh 'npm run cy:install'
                 //sh 'npm run ssat'
           // }
+          sh 'npm run ssat'
        }
 
 
