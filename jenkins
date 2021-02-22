@@ -1,12 +1,12 @@
 pipeline {
     agent {
-        docker {
+//        docker {
             label 'docker'
-            image 'node:14-alpine'
-            image 'cypress/base:10'
+//            image 'node:14-alpine'
+//            image 'cypress/base:10'
 
 
-        }
+//        }
     }
 
     tools {
