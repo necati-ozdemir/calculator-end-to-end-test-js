@@ -31,7 +31,7 @@ node {
            //.inside{
                 //sh 'npm run cy:install'
                 //sh 'npm run ssat'
-           }
+          // }
        }
 
 
