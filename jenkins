@@ -2,10 +2,7 @@ pipeline {
     agent {
 //        docker {
         label 'docker'
-        docker {
-//            image 'node:14-alpine'
-            image 'cypress/base:latest'
-        }
+
 //        }
     }
 
@@ -30,6 +27,10 @@ pipeline {
         }
         stage('Get dependencies') {
             steps {
+                agent docker {
+//                  image 'node:14-alpine'
+                    image 'cypress/base:latest'
+                }
                 sh 'npm install'
                 sh 'npm run cy:install'
 
