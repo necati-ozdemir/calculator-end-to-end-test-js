@@ -1,21 +1,21 @@
 pipeline {
     agent {
         docker {
+            label 'docker'
+            image 'node:14-alpine'
+            image 'cypress/base:10'
 
-                   image 'node:14-alpine'
-                //   image 'cypress/base:10'
 
-
-               }
+        }
     }
 
     tools {
         nodejs "NodeJS"
     }
 
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '3'))
-    }
+//    options {
+//        buildDiscarder(logRotator(numToKeepStr: '3'))
+//    }
 
 //    environment {
 //
@@ -28,16 +28,16 @@ pipeline {
                 checkout scm
             }
         }
-          stage('Get dependencies') {
-       steps{
-                  sh 'npm install'
-                  sh 'npm run cy:install'
+        stage('Get dependencies') {
+            steps {
+                sh 'npm install'
+                sh 'npm run cy:install'
 
-              }
-              }
+            }
+        }
         stage('Execute') {
             steps {
-                 sh 'npm run ssat'
+                sh 'npm run ssat'
             }
         }
     }
