@@ -34,7 +34,7 @@ pipeline {
         stage('Get dependencies') {
 
             steps {
-                docker.image('cypress/base:latest').inside {
+                dockerNode('cypress/base:latest') {
                     sh 'npm install'
                     sh 'npm run cy:install'
                 }
