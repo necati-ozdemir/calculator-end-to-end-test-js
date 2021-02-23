@@ -36,10 +36,10 @@ pipeline {
         stage('Get dependencies') {
 
             steps {
-                dockerNode('cypress/base:latest') {
+//                dockerNode('cypress/base:latest') {
                     sh 'npm install'
                     sh 'npm run cy:install'
-                }
+//                }
 
             }
         }
