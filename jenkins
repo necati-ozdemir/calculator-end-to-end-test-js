@@ -7,12 +7,12 @@ pipeline {
 
 //        }
 //    }
-    agent {
-        docker {
-//                  image 'node:14-alpine'
-            image 'cypress/base:latest'
-        }
-    }
+//    agent {
+//        docker {
+////                  image 'node:14-alpine'
+//            image 'cypress/base:latest'
+//        }
+//    }
     tools {
         nodejs "NodeJS"
         dockerTool 'docker'
@@ -34,12 +34,12 @@ pipeline {
             }
         }
         stage('Get dependencies') {
-//            agent {
-//                // this image provides everything needed to run Cypress
-//                docker {
-//                    image 'cypress/base:10'
-//                }
-//            }
+            agent {
+                // this image provides everything needed to run Cypress
+                docker {
+                    image 'cypress/base:latest'
+                }
+            }
             steps {
 //                dockerNode('cypress/base:latest') {
                     sh 'npm install'
