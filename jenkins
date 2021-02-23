@@ -34,17 +34,17 @@ pipeline {
             }
         }
         stage('Get dependencies') {
-            agent {
-                // this image provides everything needed to run Cypress
-                docker {
-                    image 'cypress/base:latest'
-                }
-            }
+//            agent {
+//                // this image provides everything needed to run Cypress
+//                docker {
+//                    image 'cypress/base:latest'
+//                }
+//            }
             steps {
-//                dockerNode('cypress/base:latest') {
+                dockerNode('cypress/base:latest') {
                     sh 'npm install'
                     sh 'npm run cy:install'
-//                }
+                }
 
             }
         }
