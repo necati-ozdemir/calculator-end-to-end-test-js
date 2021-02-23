@@ -1,7 +1,7 @@
 pipeline {
     agent {
 //        docker {
-        label 'docker && cypress'
+        label 'docker'
 //        docker 'cypress/base:latest'
 
 //        }
@@ -34,8 +34,10 @@ pipeline {
         stage('Get dependencies') {
 
             steps {
-                sh 'npm install'
-                sh 'npm run cy:install'
+                docker.image('cypress/base:latest').inside {
+                    sh 'npm install'
+                    sh 'npm run cy:install'
+                }
 
             }
         }
