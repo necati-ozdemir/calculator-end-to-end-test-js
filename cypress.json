@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://localhost:3000/",
+  "baseUrl": "10.150.17.73:8073",
   "testFiles": "**/*.feature",
   "reporter": "junit",
   "reporterOptions": {
