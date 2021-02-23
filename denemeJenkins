@@ -1,7 +1,57 @@
-node('worker_node1') {
-    stage('build-image') {
-        docker.withTool('docker') {
-            sh 'docker pull node:14-alpine'
+pipeline {
+    agent {
+        docker {
+//        label 'docker'
+        docker 'cypress/base:latest'
+
         }
     }
-}
+//    agent {
+//        docker {
+////                  image 'node:14-alpine'
+//            image 'cypress/base:latest'
+//        }
+//    }
+    tools {
+        nodejs "NodeJS"
+    }
+
+//    options {
+//        buildDiscarder(logRotator(numToKeepStr: '3'))
+//    }
+
+//    environment {
+//
+//        PATH = "$PATH:${dockerHome}/bin"
+    //   }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Get dependencies') {
+
+//            steps {
+//                dockerNode('cypress/base:latest') {
+//                    sh 'npm install'
+//                    sh 'npm run cy:install'
+//                }
+
+            }
+        }
+        stage('Execute') {
+            steps {
+                sh 'npm run ssat'
+            }
+        }
+    }
+
+    // post {
+    // always {
+    //  junit keepLongStdio: true, testResults: 'test-results/*.xml', allowEmptyResults: true
+    // archiveArtifacts artifacts: 'cypress/videos/**/*.mp4', onlyIfSuccessful: false
+    //}
+    //}
+
