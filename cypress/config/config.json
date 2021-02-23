@@ -2,8 +2,8 @@
   "url": "http://10.150.17.73:8073",
   "firstValueElementId": "firstValue",
   "secondValueElementId": "secondValue",
-  "additionButtonElementId": "additionButton",
-  "subtractionButtonElementId": "subtractionButton",
+  "calculationSelectElementId": "calculationSelect",
+  "calculationButtonElementId": "calculationButton",
   "resultValueElementId": "resultValue",
   "resultMessageElementId": "resultMessage"
 }

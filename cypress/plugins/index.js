@@ -42,10 +42,9 @@ module.exports = (on, config) => {
             console.log(composeFilePath)
             const composeFile = "docker-compose.yml";
             const cont = await new DockerComposeEnvironment(composeFilePath, composeFile)
-                .withEnv("WORKER_IP", "10.150.17.73")
-                //.withStartupTimeout(120000)
-                .withWaitStrategy("calculator-service",Wait.forHealthCheck())
-              //  .withWaitStrategy("calculator-ui", Wait.forLogMessage("You can now view calculator-ui in the browser."))
+                .withEnv("WORKER_IP", process.env.WORKER_IP)
+                .withWaitStrategy("calculator-service", Wait.forHealthCheck())
+
                 .up();
             // const props = {}
             // props.port = cont.getMappedPort(8070);
@@ -78,7 +77,7 @@ module.exports = (on, config) => {
         createSubtractionContainer: async (network) => {
             const cont = await new GenericContainer("mbarkin26/subtraction-service:latest")
                 .withEnv("SERVER_PORT", "8071")
-                .withEnv("DOCKER_HOST", "tcp://docker:2375")
+                .withEnv("DOCKER_HOST", "tcp://10.150.21.212:2375")
                 // .withNetworkMode(network)
                 .withExposedPorts(8071)
                 .withNetworkMode("host")
