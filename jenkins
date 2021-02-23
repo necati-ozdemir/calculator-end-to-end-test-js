@@ -36,11 +36,10 @@ pipeline {
         stage('Get dependencies') {
 
             steps {
-                dockerNode('openjdk:11.0.7'){
                 dockerNode('cypress/base:latest') {
                     sh 'npm install'
                     sh 'npm run cy:install'
-                }}
+                }
 
             }
         }
