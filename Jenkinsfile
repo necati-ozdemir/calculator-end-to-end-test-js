@@ -32,7 +32,7 @@ node {
            docker.image('cypress/base:latest')
            .inside{
                 sh 'npm run cy:install'
-                sh 'npm run ssat'
+                sh 'npm run cy:run'
           }
 
        }
