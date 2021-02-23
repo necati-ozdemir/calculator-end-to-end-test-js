@@ -24,22 +24,22 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-let environment = {};
-
-before(() => {
-    console.log("commands before")
-    cy.task('createComposeContainer')
-        .then((compose) => {
-            environment = compose;
-        });
-});
-
-
-after(() => {
-    console.log(environment);
-    console.log("commands after")
-    cy.task('stopComposeContainer', {environment: environment})
-        .then((compose) => {
-            console.log("stopped")
-        })
-});
+// let environment = {};
+//
+// before(() => {
+//     console.log("commands before")
+//     cy.task('createComposeContainer')
+//         .then((compose) => {
+//             environment = compose;
+//         });
+// });
+//
+//
+// after(() => {
+//     console.log(environment);
+//     console.log("commands after")
+//     cy.task('stopComposeContainer', {environment: environment})
+//         .then((compose) => {
+//             console.log("stopped")
+//         })
+// });
