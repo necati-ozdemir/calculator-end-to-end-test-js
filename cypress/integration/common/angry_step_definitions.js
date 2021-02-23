@@ -9,15 +9,16 @@ Given(/^Either of any value is not given$/, () => {
 });
 
 When(/^Necati wants to perform (\S+) operation$/, (operation) => {
-    let buttonElementId = operation === "ADDITION" ?
-        calculatorConfigResolver.additionButtonElementId :
-        calculatorConfigResolver.subtractionButtonElementId;
+    cy.get(calculatorConfigResolver.calculationSelectElementId)
+        .select(operation);
 
-    cy.get('button[id="' + buttonElementId + '"]')
+    cy.get('button[id="' + calculatorConfigResolver.calculationButtonElementId + '"]')
         .click();
 });
 
 Then(/^Necati should see a warning notification$/, () => {
-    cy.get('input[id="'+ calculatorConfigResolver.resultValueElementId + '"]').should('have.value', '0');
-    cy.get('input[id="'+ calculatorConfigResolver.resultMessageElementId + '"]').should('have.value', 'FAIL');
+    cy.get('input[id="'+ calculatorConfigResolver.resultValueElementId + '"]')
+        .should('have.value', '0');
+    cy.get('input[id="'+ calculatorConfigResolver.resultMessageElementId + '"]')
+        .should('have.value', 'FAIL');
 });

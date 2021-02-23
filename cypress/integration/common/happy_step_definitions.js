@@ -17,16 +17,17 @@ Given(/^Numbers are given (\S+) and (\S+)$/, (firstValue, secondValue) => {
 });
 
 When(/^Barkın wants to perform (\S+) those two numbers$/, (operation) => {
-    let buttonElementId = operation === "ADDITION" ?
-        calculatorConfigResolver.additionButtonElementId :
-        calculatorConfigResolver.subtractionButtonElementId;
+    cy.get(calculatorConfigResolver.calculationSelectElementId)
+        .select(operation);
 
-    cy.get('button[id="' + buttonElementId + '"]')
+    cy.get('button[id="' + calculatorConfigResolver.calculationButtonElementId + '"]')
         .click();
 });
 
 Then(/^Barkın should see result (\S+) and (\S+) message$/, (resultValue, resultMessage) => {
     console.log(calculatorConfigResolver.resultValueElementId)
-    cy.get('input[id="'+ calculatorConfigResolver.resultValueElementId + '"]').should('have.value', resultValue)
-    cy.get('input[id="'+ calculatorConfigResolver.resultMessageElementId + '"]').should('have.value', resultMessage)
+    cy.get('input[id="'+ calculatorConfigResolver.resultValueElementId + '"]')
+        .should('have.value', resultValue)
+    cy.get('input[id="'+ calculatorConfigResolver.resultMessageElementId + '"]')
+        .should('have.value', resultMessage)
 });
