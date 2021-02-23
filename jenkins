@@ -1,17 +1,17 @@
 pipeline {
     agent {
 //        docker {
-        label 'docker'
+        label 'docker && cypress'
 //        docker 'cypress/base:latest'
 
 //        }
     }
-    agent {
-        docker {
-//                  image 'node:14-alpine'
-            image 'cypress/base:latest'
-        }
-    }
+//    agent {
+//        docker {
+////                  image 'node:14-alpine'
+//            image 'cypress/base:latest'
+//        }
+//    }
     tools {
         nodejs "NodeJS"
     }
