@@ -2,32 +2,31 @@ import {Given, Then, When} from 'cypress-cucumber-preprocessor/steps';
 import calculatorConfigResolver from '../../config/config.json'
 
 Given(/^The below numbers are given$/, (table) => {
-    cy.get('input[id="firstValue"]')
+    cy.get('#' + calculatorConfigResolver.firstValueElementId)
         .type(table.rawTable[1][0]);
-    cy.get('input[id="secondValue"]')
+    cy.get('#' + calculatorConfigResolver.secondValueElementId)
         .type(table.rawTable[1][1]);
 });
 
 Given(/^Numbers are given (\S+) and (\S+)$/, (firstValue, secondValue) => {
 
-    cy.get('input[id="'+ calculatorConfigResolver.firstValueElementId + '"]')
+    cy.get('#' + calculatorConfigResolver.firstValueElementId)
         .type(firstValue);
-    cy.get('input[id="'+ calculatorConfigResolver.secondValueElementId + '"]')
+    cy.get('#' + calculatorConfigResolver.secondValueElementId)
         .type(secondValue);
 });
 
 When(/^Barkın wants to perform (\S+) those two numbers$/, (operation) => {
-    cy.get(calculatorConfigResolver.calculationSelectElementId)
-        .select(operation);
+    cy.get('#' + calculatorConfigResolver.calculationSelectElementId)
+        .type(operation + '{enter}')
 
-    cy.get('button[id="' + calculatorConfigResolver.calculationButtonElementId + '"]')
+    cy.get('#' + calculatorConfigResolver.calculationButtonElementId)
         .click();
 });
 
 Then(/^Barkın should see result (\S+) and (\S+) message$/, (resultValue, resultMessage) => {
-    console.log(calculatorConfigResolver.resultValueElementId)
-    cy.get('input[id="'+ calculatorConfigResolver.resultValueElementId + '"]')
+    cy.get('#' + calculatorConfigResolver.resultValueElementId)
         .should('have.value', resultValue)
-    cy.get('input[id="'+ calculatorConfigResolver.resultMessageElementId + '"]')
+    cy.get('#' + calculatorConfigResolver.resultMessageElementId)
         .should('have.value', resultMessage)
 });
